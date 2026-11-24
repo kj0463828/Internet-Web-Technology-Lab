@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="calculator">
+
+    <h2>Calculator</h2>
+
+    <!-- Display Screen -->
+    <input type="text" id="display" readonly>
+
+    <!-- Calculator Buttons -->
+    <div class="buttons">
+
+        <button onclick="clearDisplay()" class="special">C</button>
+        <button onclick="deleteNumber()" class="special">DEL</button>
+        <button onclick="appendValue('%')">%</button>
+        <button onclick="appendValue('/')">÷</button>
+
+        <button onclick="appendValue('7')">7</button>
+        <button onclick="appendValue('8')">8</button>
+        <button onclick="appendValue('9')">9</button>
+        <button onclick="appendValue('*')">×</button>
+
+        <button onclick="appendValue('4')">4</button>
+        <button onclick="appendValue('5')">5</button>
+        <button onclick="appendValue('6')">6</button>
+        <button onclick="appendValue('-')">-</button>
+
+        <button onclick="appendValue('1')">1</button>
+        <button onclick="appendValue('2')">2</button>
+        <button onclick="appendValue('3')">3</button>
+        <button onclick="appendValue('+')">+</button>
+
+        <button onclick="appendValue('0')">0</button>
+        <button onclick="appendValue('.')">.</button>
+        <button onclick="calculate()" class="equal">=</button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+// Get Display Element
+
+let display = document.getElementById("display");
+
+
+// Insert Number and Operator
+
+function appendValue(value) {
+
+    display.value += value;
+
+}
+
+
+// Clear All Values
+
+function clearDisplay() {
+
+    display.value = "";
+
+}
+
+
+// Delete Last Character
+
+function deleteNumber() {
+
+    display.value = display.value.slice(0, -1);
+
+}
+
+
+// Calculate Result
+
+function calculate() {
+
+    try {
+
+        if (display.value === "") {
+            return;
+        }
+
+        // Check Valid Expression
+        if (!/^[0-9+\-*/%.()\s]+$/.test(display.value)) {
+            display.value = "Error";
+            return;
+        }
+
+        let result = Function(
+            '"use strict"; return (' + display.value + ')'
+        )();
+
+        if (!Number.isFinite(result)) {
+            display.value = "Error";
+        }
+        else {
+            display.value = result;
+        }
+
+    }
+
+    catch(error) {
+
+        display.value = "Error";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
