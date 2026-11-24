@@ -1,0 +1,286 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interactive Admission Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Admission Form</h2>
+
+    <form id="admissionForm">
+
+        <label>Student Name:</label>
+        <input type="text" id="name" placeholder="Enter Student Name">
+
+        <label>Father's Name:</label>
+        <input type="text" id="father" placeholder="Enter Father's Name">
+
+        <label>Mother's Name:</label>
+        <input type="text" id="mother" placeholder="Enter Mother's Name">
+
+        <label>Date of Birth:</label>
+        <input type="date" id="dob">
+
+        <label>Gender:</label>
+
+        <div class="gender">
+            <input type="radio" name="gender" value="Male"> Male
+            <input type="radio" name="gender" value="Female"> Female
+            <input type="radio" name="gender" value="Other"> Other
+        </div>
+
+        <label>Email Address:</label>
+        <input type="text" id="email" placeholder="Enter Email">
+
+        <label>Mobile Number:</label>
+        <input type="text" id="mobile" placeholder="Enter Mobile Number">
+
+        <label>Address:</label>
+        <textarea id="address" placeholder="Enter Your Address"></textarea>
+
+        <label>Select Course:</label>
+        <select id="course">
+            <option value="">-- Select Course --</option>
+            <option value="Computer Science">Computer Science</option>
+            <option value="Computer Application">Computer Application</option>
+            <option value="Web Development">Web Development</option>
+            <option value="Python Programming">Python Programming</option>
+        </select>
+
+        <label>Password:</label>
+
+        <div class="password-box">
+            <input type="password" id="password"
+            placeholder="Enter Password">
+
+            <button type="button" onclick="togglePassword('password',this)" class="eye-btn">
+                <svg viewBox="0 0 24 24" class="eye-icon">
+                    <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                </svg>
+            </button>
+        </div>
+
+        <label>Confirm Password:</label>
+
+        <div class="password-box">
+            <input type="password" id="confirmPassword"
+            placeholder="Confirm Password">
+
+            <button type="button" onclick="togglePassword('confirmPassword',this)" class="eye-btn">
+                <svg viewBox="0 0 24 24" class="eye-icon">
+                    <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="buttons">
+            <button type="submit">Submit</button>
+            <button type="reset" class="reset">Reset</button>
+        </div>
+
+        <p id="result"></p>
+
+    </form>
+
+</div>
+
+
+<script>
+
+// Show and Hide Password
+
+function togglePassword(id, button) {
+
+    let password = document.getElementById(id);
+
+    let icon = button.querySelector("svg");
+
+    if (password.type === "password") {
+
+        password.type = "text";
+
+        icon.innerHTML = `
+        <path d="M3 3l18 18"/>
+        <path d="M10.6 10.6a2 2 0 002.8 2.8"/>
+        <path d="M9.9 5.2A11 11 0 0112 5c6.5 0 10 7 10 7s-1 2-3.2 4.1"/>
+        <path d="M6.2 6.2C3.5 8 2 12 2 12s3.5 7 10 7c1.5 0 2.8-.3 4-.9"/>
+        `;
+
+    } else {
+
+        password.type = "password";
+
+        icon.innerHTML = `
+        <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/>
+        <circle cx="12" cy="12" r="3"/>
+        `;
+
+    }
+
+}
+
+
+// Admission Form Validation
+
+document.getElementById("admissionForm").addEventListener("submit",
+
+function(event) {
+
+    event.preventDefault();
+
+    let name = document.getElementById("name").value.trim();
+    let father = document.getElementById("father").value.trim();
+    let mother = document.getElementById("mother").value.trim();
+    let dob = document.getElementById("dob").value;
+    let email = document.getElementById("email").value.trim();
+    let mobile = document.getElementById("mobile").value.trim();
+    let address = document.getElementById("address").value.trim();
+    let course = document.getElementById("course").value;
+    let password = document.getElementById("password").value;
+    let confirmPassword = document.getElementById("confirmPassword").value;
+
+    let result = document.getElementById("result");
+
+
+    // Name Validation
+
+    let namePattern = /^[a-zA-Z ]{3,}$/;
+
+    if (!namePattern.test(name)) {
+        result.innerHTML = "Please Enter a Valid Student Name!";
+        return;
+    }
+
+
+    // Father's Name Validation
+
+    if (!namePattern.test(father)) {
+        result.innerHTML = "Please Enter a Valid Father's Name!";
+        return;
+    }
+
+
+    // Mother's Name Validation
+
+    if (!namePattern.test(mother)) {
+        result.innerHTML = "Please Enter a Valid Mother's Name!";
+        return;
+    }
+
+
+    // Date of Birth Validation
+
+    if (dob === "" || new Date(dob) >= new Date()) {
+        result.innerHTML = "Please Select a Valid Date of Birth!";
+        return;
+    }
+
+
+    // Gender Validation
+
+    let gender = document.querySelector('input[name="gender"]:checked');
+
+    if (!gender) {
+        result.innerHTML = "Please Select Your Gender!";
+        return;
+    }
+
+
+    // Email Validation
+
+    let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (!emailPattern.test(email)) {
+        result.innerHTML = "Invalid Email Address!";
+        return;
+    }
+
+
+    // Mobile Number Validation
+
+    let mobilePattern = /^[6-9][0-9]{9}$/;
+
+    if (!mobilePattern.test(mobile)) {
+        result.innerHTML = "Enter a Valid 10 Digit Mobile Number!";
+        return;
+    }
+
+
+    // Address Validation
+
+    if (address.length < 10) {
+        result.innerHTML = "Please Enter a Complete Address!";
+        return;
+    }
+
+
+    // Course Validation
+
+    if (course === "") {
+        result.innerHTML = "Please Select a Course!";
+        return;
+    }
+
+
+    // Password Validation
+
+    let passwordPattern =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/;
+
+    if (!passwordPattern.test(password)) {
+        result.innerHTML =
+        "Password must contain 8 characters, uppercase, lowercase, number and special character!";
+        return;
+    }
+
+
+    // Confirm Password Validation
+
+    if (password !== confirmPassword) {
+        result.innerHTML = "Password and Confirm Password do not match!";
+        return;
+    }
+
+
+    // Successful Submission
+
+    result.style.color = "green";
+
+    result.innerHTML =
+    "Admission Form Submitted Successfully!";
+
+
+    // Display Student Details
+
+    alert(
+        "Admission Successful!\n\n" +
+        "Student Name: " + name +
+        "\nEmail: " + email +
+        "\nMobile: " + mobile +
+        "\nCourse: " + course
+    );
+
+});
+
+
+// Reset Message
+
+document.getElementById("admissionForm").addEventListener("reset",
+function() {
+
+    document.getElementById("result").innerHTML = "";
+    document.getElementById("result").style.color = "red";
+
+});
+
+</script>
+
+</body>
+</html>
