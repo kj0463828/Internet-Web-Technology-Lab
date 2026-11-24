@@ -1,0 +1,248 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+}
+
+
+/* Header */
+
+header {
+    background: #12345a;
+    color: white;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    font-size: 28px;
+}
+
+.logo p {
+    margin-top: 5px;
+    color: #f1c40f;
+}
+
+.header-info {
+    text-align: right;
+    line-height: 25px;
+}
+
+
+/* Navigation Menu */
+
+nav {
+    background: #1d4e89;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+.menu li {
+    position: relative;
+}
+
+.menu li a {
+    display: block;
+    padding: 16px 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.menu li a:hover {
+    background: #f39c12;
+    color: black;
+}
+
+
+/* Dropdown Submenu */
+
+.submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #ffffff;
+    width: 210px;
+    list-style: none;
+    display: none;
+    z-index: 100;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+}
+
+.submenu li a {
+    color: #222;
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.submenu li a:hover {
+    background: #1d4e89;
+    color: white;
+}
+
+
+/* Show Dropdown on Hover */
+
+.dropdown:hover > .submenu {
+    display: block;
+}
+
+
+/* Banner */
+
+.banner {
+    background: linear-gradient(120deg, #2980b9, #12345a);
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.banner h1 {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.banner p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.btn {
+    display: inline-block;
+    background: #f39c12;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background: #d68910;
+}
+
+
+/* Content Sections */
+
+.content {
+    padding: 45px 30px;
+    text-align: center;
+}
+
+.content h2 {
+    color: #12345a;
+    margin-bottom: 20px;
+}
+
+.content p {
+    line-height: 1.8;
+}
+
+
+/* Cards */
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.card {
+    background: white;
+    width: 250px;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px #ccc;
+}
+
+.card h3 {
+    color: #1d4e89;
+    margin-bottom: 12px;
+}
+
+
+/* Notice Board */
+
+.notice {
+    background: #fff3cd;
+    padding: 25px;
+    text-align: center;
+}
+
+.notice h2 {
+    color: #12345a;
+    margin-bottom: 15px;
+}
+
+marquee {
+    color: #c0392b;
+    font-weight: bold;
+}
+
+
+/* Footer */
+
+footer {
+    background: #12345a;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    line-height: 25px;
+}
+
+
+/* Mobile Responsive */
+
+@media (max-width: 768px) {
+
+    header {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .header-info {
+        text-align: center;
+    }
+
+    .menu {
+        flex-direction: column;
+    }
+
+    .menu li a {
+        text-align: center;
+    }
+
+    .submenu {
+        position: static;
+        width: 100%;
+        display: none;
+        box-shadow: none;
+    }
+
+    .submenu.show {
+        display: block;
+    }
+
+    .dropdown:hover > .submenu {
+        display: none;
+    }
+
+    .banner h1 {
+        font-size: 27px;
+    }
+
+}

@@ -1,0 +1,291 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>University Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- University Header -->
+
+<header>
+
+    <div class="logo">
+        <h1>ABC UNIVERSITY</h1>
+        
+    </div>
+
+    <div class="header-info">
+        <p>Welcome to ABC University</p>
+        
+    </div>
+
+</header>
+
+
+<!-- Navigation Menu -->
+
+<nav>
+
+    <ul class="menu">
+
+        <li><a href="#home">Home</a></li>
+
+        <li class="dropdown">
+            <a href="#about">About Us</a>
+
+            <ul class="submenu">
+                <li><a href="#about">University Profile</a></li>
+                <li><a href="#about">History</a></li>
+                <li><a href="#about">Vision & Mission</a></li>
+                <li><a href="#about">Administration</a></li>
+            </ul>
+
+        </li>
+
+
+        <li class="dropdown">
+            <a href="#academics">Academics</a>
+
+            <ul class="submenu">
+                <li><a href="#academics">Undergraduate</a></li>
+                <li><a href="#academics">Postgraduate</a></li>
+                <li><a href="#academics">Research</a></li>
+                <li><a href="#academics">Academic Calendar</a></li>
+            </ul>
+
+        </li>
+
+
+        <li class="dropdown">
+            <a href="#admission">Admission</a>
+
+            <ul class="submenu">
+                <li><a href="#admission">Admission Process</a></li>
+                <li><a href="#admission">Eligibility</a></li>
+                <li><a href="#admission">Online Application</a></li>
+                <li><a href="#admission">Scholarship</a></li>
+            </ul>
+
+        </li>
+
+
+        <li class="dropdown">
+            <a href="#departments">Departments</a>
+
+            <ul class="submenu">
+                <li><a href="#departments">Computer Science</a></li>
+                <li><a href="#departments">Mathematics</a></li>
+                <li><a href="#departments">Physics</a></li>
+                <li><a href="#departments">Chemistry</a></li>
+                <li><a href="#departments">English</a></li>
+            </ul>
+
+        </li>
+
+
+        <li class="dropdown">
+            <a href="#examination">Examination</a>
+
+            <ul class="submenu">
+                <li><a href="#examination">Exam Routine</a></li>
+                <li><a href="#examination">Results</a></li>
+                <li><a href="#examination">Notice</a></li>
+            </ul>
+
+        </li>
+
+
+        <li><a href="#contact">Contact Us</a></li>
+
+    </ul>
+
+</nav>
+
+
+<!-- Home Section -->
+
+<section id="home" class="banner">
+
+    <h1>Welcome to ABC University</h1>
+
+    <p>Building Your Future Through Quality Education</p>
+
+    <a href="#admission" class="btn">Apply Now</a>
+
+</section>
+
+
+<!-- About Section -->
+
+<section id="about" class="content">
+
+    <h2>About Our University</h2>
+
+    <p>
+        ABC University is committed to providing quality education
+        and developing knowledge, skills and innovation among students.
+        Our university provides a friendly learning environment
+        with experienced teachers and modern facilities.
+    </p>
+
+</section>
+
+
+<!-- Academics Section -->
+
+<section id="academics" class="content">
+
+    <h2>Academic Programs</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Undergraduate</h3>
+            <p>Various Bachelor's Degree Programs.</p>
+        </div>
+
+        <div class="card">
+            <h3>Postgraduate</h3>
+            <p>Advanced Master's Degree Programs.</p>
+        </div>
+
+        <div class="card">
+            <h3>Research</h3>
+            <p>Research and Innovation Facilities.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Admission Section -->
+
+<section id="admission" class="content">
+
+    <h2>Admission Information</h2>
+
+    <p>
+        Students can apply for different undergraduate
+        and postgraduate courses.
+    </p>
+
+    <a href="#contact" class="btn">Admission Enquiry</a>
+
+</section>
+
+
+<!-- Departments Section -->
+
+<section id="departments" class="content">
+
+    <h2>Our Departments</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Computer Science</h3>
+            <p>Computer and Technology Education.</p>
+        </div>
+
+        <div class="card">
+            <h3>Mathematics</h3>
+            <p>Mathematical Studies and Research.</p>
+        </div>
+
+        <div class="card">
+            <h3>Physics</h3>
+            <p>Science and Laboratory Education.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Examination Section -->
+
+<section id="examination" class="content">
+
+    <h2>Examination & Results</h2>
+
+    <p>Check examination schedules, notices and results.</p>
+
+    <ul>
+        <li>Semester Examination Routine</li>
+        <li>Examination Notice</li>
+        <li>Semester Results</li>
+    </ul>
+
+</section>
+
+
+<!-- Notice Board -->
+
+<section class="notice">
+
+    <h2>Latest Notice Board</h2>
+
+    <marquee direction="left">
+        Admission Open | Examination Notice | Scholarship
+        Application | Semester Registration
+    </marquee>
+
+</section>
+
+
+<!-- Contact Section -->
+
+<section id="contact" class="content">
+
+    <h2>Contact Us</h2>
+
+    <p>ABC University, Midnapore, West Bengal, India</p>
+
+    <p>Email: info@abcuniversity.edu.in</p>
+
+    <p>Phone: +91 1234567890</p>
+
+</section>
+
+
+<!-- Footer -->
+
+<footer>
+
+    <h3>ABC UNIVERSITY</h3>
+
+</footer>
+
+
+<script>
+
+// Dropdown Menu Click Support for Mobile
+
+let dropdowns = document.querySelectorAll(".dropdown");
+
+dropdowns.forEach(function(item) {
+
+    item.addEventListener("click", function(event) {
+
+        if (window.innerWidth <= 768) {
+
+            event.stopPropagation();
+
+            let submenu = this.querySelector(".submenu");
+
+            submenu.classList.toggle("show");
+
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
