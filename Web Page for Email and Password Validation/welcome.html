@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Welcome Page</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Login Successful!</h2>
+
+    <h3>Welcome to Our Website</h3>
+
+    <p id="email"></p>
+
+    <button onclick="logout()">Logout</button>
+
+</div>
+
+
+<script>
+
+// Get Email from Session Storage
+
+let email = sessionStorage.getItem("email");
+
+
+// Check Login Session
+
+if (!email) {
+
+    window.location.replace("login.html");
+
+}
+
+else {
+
+    document.getElementById("email").textContent =
+    "Your Email: " + email;
+
+}
+
+
+// Logout Function
+
+function logout() {
+
+    // Clear All Session Data
+
+    sessionStorage.clear();
+
+    // Redirect to Index Page
+
+    window.location.replace("login.html");
+
+}
+
+</script>
+
+</body>
+
+</html>
